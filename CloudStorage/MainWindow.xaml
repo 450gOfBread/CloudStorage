@@ -1,0 +1,45 @@
+﻿<Window x:Class="CloudStorage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CloudStorage"
+        
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+
+    <Grid>
+
+        
+
+        <TextBox x:Name="linkBox" Margin="75,42,92,0" TextWrapping="Wrap" Height="23" VerticalAlignment="Top">
+            <TextBox.Effect>
+                <DropShadowEffect Direction="-100" ShadowDepth="-5" BlurRadius="10"/>
+            </TextBox.Effect>
+        </TextBox>
+
+
+        <ListView x:Name="FileDropControl" Margin="25,100,25,25" Drop="FileDropControl_Drop" MouseLeftButtonDown="FileDropControl_MouseLeftButtonDown" >
+
+            <ListView.View>
+                <GridView ColumnHeaderToolTip="File Information">
+                    <GridViewColumn Header="File Name" Width="200"/>
+                    <GridViewColumn Header="Date Modified" Width="200"/>
+                    <GridViewColumn Header="Type" Width="200"/>
+                    <GridViewColumn Header="Size" Width="142"/>
+                </GridView>
+            </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="FileDropControl_MouseLeftButtonDown"/>
+                    <EventSetter Event="PreviewMouseRightButtonDown" Handler="FileDropControl_MouseRightButtonDown"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <Button x:Name="refreshButton" Content="Refresh" Margin="625,75,92,0" Click="refreshButton_Click" Height="20" VerticalAlignment="Top"/>
+        <Button x:Name="deleteButton" Content="Delete" Margin="545,75,172,0" Click="deleteButton_Click" Height="20" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</Window>
