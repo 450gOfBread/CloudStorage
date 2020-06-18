@@ -34,7 +34,7 @@ namespace CloudStorage
         {
             linkBox.Text = "";
 
-            string[] files = ((string[])e.Data.GetData(DataFormats.FileDrop));
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             
 
 
@@ -46,7 +46,6 @@ namespace CloudStorage
             linkBox.Text = linkBox.Text.Trim();
             linkBox.Text = linkBox.Text.Trim(';');
 
-            
             loadingShadow.Color = TransferData(files, dir, 4096) ? Colors.LimeGreen : Colors.Crimson;
             RefreshFileData();
         }
@@ -157,7 +156,7 @@ namespace CloudStorage
             if (selectedItem != null)
             {
                 // DELETE FUNCTION TOO UNSTABLE HERE
-                //fileManager.DeleteFile(fileManager.GetFilePath(selectedItem));
+                fileManager.DeleteFile(fileManager.GetFilePath(selectedItem));
             }
         }
     }
